@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using SeleniumFullTutorial.Common;
 using SeleniumFullTutorial.Model;
 
