@@ -17,6 +17,7 @@ namespace SeleniumFullTutorial.Common
         protected LoginHelper loginHelper;
         protected NavigationHelper navigator;
         protected ClickerHelper clickerHelper;
+        protected CheckElementsHelper checkElementsHelper;
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
@@ -29,6 +30,7 @@ namespace SeleniumFullTutorial.Common
 
             loginHelper = new LoginHelper(this);
             clickerHelper = new ClickerHelper(this);
+            checkElementsHelper = new CheckElementsHelper(this);
             navigator = new NavigationHelper(this, baseURL);
         }
 
@@ -74,6 +76,7 @@ namespace SeleniumFullTutorial.Common
         public IConfiguration Config => config;
         public LoginHelper Auth => loginHelper;
         public ClickerHelper Clicker => clickerHelper;
+        public CheckElementsHelper CheckEl => checkElementsHelper;
 
 
     }
