@@ -10,9 +10,10 @@ namespace SeleniumFullTutorial.Common
         public static ChromeOptions Do(ChromeOptions option)
         {
             //Из конфигурации добавляем все аргументы из секции ChromeOptionsArguments
-            TestBase.Config.GetSection("ChromeOptionsArguments").Get<List<string>>().ForEach(arg => option.AddArgument(arg));
+            var config = Configuration.Load();
+            config.GetSection("ChromeOptionsArguments").Get<List<string>>().ForEach(arg => option.AddArgument(arg));
             //Из конфига получаем AdditionalCapability
-            foreach (var section in TestBase.Config.GetSection("ChromeAdditionalCapability").GetChildren())
+            foreach (var section in config.GetSection("ChromeAdditionalCapability").GetChildren())
             {
                 bool result;
                 var values = section.Get<string[]>();

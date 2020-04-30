@@ -4,13 +4,20 @@ using SeleniumFullTutorial.Model;
 namespace SeleniumFullTutorial.Tests
 {
     [TestFixture]
-    public class LoginTests : TestBase
+    public class ClickerTests : TestBase
     {
-        [Test]
-        public void AdminLoginTest()
+        [SetUp]
+        public void SetupLogin()
         {
             app.Navigator.GoToAdminPage();
             app.Auth.Login(new AccountData("admin", "admin"));
+        }
+
+        [Test]
+        public void ClickerTest()
+        {
+            var hrefs = app.Clicker.GetMainLinks();
+            app.Clicker.ClickOnLinks(hrefs);
         }
     }
 }
