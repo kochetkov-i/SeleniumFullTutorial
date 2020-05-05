@@ -18,6 +18,7 @@ namespace SeleniumFullTutorial.Common
         protected NavigationHelper navigator;
         protected ClickerHelper clickerHelper;
         protected CheckElementsHelper checkElementsHelper;
+        protected SortHelper sortHelper;
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
@@ -32,6 +33,7 @@ namespace SeleniumFullTutorial.Common
             clickerHelper = new ClickerHelper(this);
             checkElementsHelper = new CheckElementsHelper(this);
             navigator = new NavigationHelper(this, baseURL);
+            sortHelper = new SortHelper(this);
         }
 
         //не всегда вызывается деструктор
@@ -77,7 +79,7 @@ namespace SeleniumFullTutorial.Common
         public LoginHelper Auth => loginHelper;
         public ClickerHelper Clicker => clickerHelper;
         public CheckElementsHelper CheckEl => checkElementsHelper;
-
+        public SortHelper Sort => sortHelper;
 
     }
 }

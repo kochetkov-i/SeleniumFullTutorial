@@ -1,4 +1,5 @@
 ﻿using SeleniumFullTutorial.Common;
+using System;
 
 namespace SeleniumFullTutorial.Helpers
 {
@@ -32,6 +33,16 @@ namespace SeleniumFullTutorial.Helpers
         public void GoToAdminPage()
         {
             GoToCheckedlink(baseURL + "litecart/admin/");
+        }
+
+        public void GoToAdminCountriesPage()
+        {
+            GoToCheckedlink(baseURL + "litecart/admin/?app=countries");
+        }
+
+        public void GoToAdminZonesPage()
+        {
+            GoToCheckedlink(baseURL + "litecart/admin/?app=geo_zones");
         }
     }
 }
