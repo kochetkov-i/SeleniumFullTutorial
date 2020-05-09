@@ -44,5 +44,10 @@ namespace SeleniumFullTutorial.Helpers
         {
             GoToCheckedlink(baseURL + "litecart/admin/?app=geo_zones");
         }
+
+        public void GoToCreateAccountPage()
+        {
+            GoToCheckedlink(baseURL + "litecart/en/create_account");
+        }
     }
 }
