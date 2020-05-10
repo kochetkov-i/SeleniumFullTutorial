@@ -2,18 +2,19 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumFullTutorial.Common;
 using System;
-using System.Linq;
 
 namespace SeleniumFullTutorial.Helpers
 {
     public class HelperBase
     {
         protected IWebDriver driver;
+        protected WebDriverWait wait;
         protected ApplicationManager manager;
 
         public HelperBase(ApplicationManager manager)
         {
             driver = manager.Driver;
+            wait = manager.Wait;
             this.manager = manager;
         }
 
@@ -34,22 +35,39 @@ namespace SeleniumFullTutorial.Helpers
         {
             if (text != null)
             {
+                wait.Until(d => driver.FindElements(locator).Count > 0);
                 driver.FindElement(locator).Clear();
                 driver.FindElement(locator).SendKeys(text);
             }
         }
 
+        public void PressButton(By locator)
+        {
+            try
+            {
+                wait.Until(d => driver.FindElements(locator).Count > 0);
+                driver.FindElement(locator).Click();
+            }
+            catch(Exception ex)
+            {
+                throw new TimeoutException($"Button {locator} not press: {ex}");
+            }
+        }
+
         public void DropDownSelect(By locator, string text)
         {
-            SelectElement menu = new SelectElement(driver.FindElement(locator));
-            menu.SelectByText(text, true); 
+            if (text != null)
+            {
+                wait.Until(d => driver.FindElements(locator).Count > 0);
+                SelectElement menu = new SelectElement(driver.FindElement(locator));
+                menu.SelectByText(text, true);
+            }
         }
 
         public void DropDownSelect(By locator)
         {
             try
             {
-                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                 wait.Until(d => driver.FindElements(locator).Count > 0);
                 IWebElement element = driver.FindElement(locator);
                 element.Click(); //без этого клика нельзя получить количество опций

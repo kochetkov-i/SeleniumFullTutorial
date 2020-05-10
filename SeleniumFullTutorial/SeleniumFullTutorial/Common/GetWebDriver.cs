@@ -7,14 +7,20 @@ namespace SeleniumFullTutorial.Common
 {
     public class GetWebDriver
     {
+        private static IWebDriver Driver;
         public static IWebDriver Do(string browser)
         {
+            var config = Configuration.Load();
             try
             {
                 switch (browser)
                 {
                     case "chrome":
-                        return new ChromeDriver(SetDriverOptions.Do(new ChromeOptions()));
+                        Driver = new ChromeDriver(SetDriverOptions.Do(new ChromeOptions()));
+                        Driver.Manage().Timeouts().ImplicitWait = TimeSpan.Parse(config["Timeouts:default"]);
+                        Driver.Manage().Timeouts().PageLoad = TimeSpan.Parse(config["Timeouts:default"]);
+                        Driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.Parse(config["Timeouts:default"]);
+                        return Driver;
                     case "firefox":
                         return new FirefoxDriver(SetDriverOptions.Do(new FirefoxOptions()));
                     default:

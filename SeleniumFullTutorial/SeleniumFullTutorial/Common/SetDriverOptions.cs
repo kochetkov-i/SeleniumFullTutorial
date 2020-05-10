@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace SeleniumFullTutorial.Common
                 else
                     option.AddAdditionalCapability(section.Key, values[0], bool.Parse(values[1]));
             }
+            option.PageLoadStrategy = PageLoadStrategy.Normal;
             return option;
         }
 

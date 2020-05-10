@@ -5,15 +5,8 @@ using System;
 namespace SeleniumFullTutorial.Tests
 {
     [TestFixture]
-    public class SortTests : TestBase
+    public class SortTests : AuthTestBase
     {
-        [SetUp]
-        public void SetupLogin()
-        {
-            app.Navigator.GoToAdminPage();
-            app.Auth.Login(new AccountData("admin", "admin"));
-        }
-
         /// <summary>
         /// 
         /// </summary>

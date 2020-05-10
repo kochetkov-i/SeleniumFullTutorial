@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SeleniumFullTutorial.Common;
 using System;
+using System.Globalization;
 using System.Text;
 
 namespace SeleniumFullTutorial.Tests
@@ -33,6 +34,19 @@ namespace SeleniumFullTutorial.Tests
                 sb.Append(Alphabet[rnd.Next(0, Alphabet.Length - 1)]);
             }
             return sb.ToString();
+        }
+
+        public static string GenerateRandomDate(string startDate = null)
+        {
+            string dateFormat = "yyyy-MM-dd";
+            DateTime start = new DateTime();
+            if (string.IsNullOrEmpty(startDate))
+                start = DateTime.Now; 
+            else
+                start = DateTime.ParseExact(startDate, dateFormat, CultureInfo.CurrentCulture);
+            DateTime end = new DateTime(2100,12,12);
+            int count = (end - start).Days;
+            return start.AddDays(rnd.Next(1, count)).ToString(dateFormat);
         }
     }
 }

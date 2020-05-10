@@ -49,5 +49,10 @@ namespace SeleniumFullTutorial.Helpers
         {
             GoToCheckedlink(baseURL + "litecart/en/create_account");
         }
+
+        public void GoToAdminCatalogPage()
+        {
+            GoToCheckedlink(baseURL + "litecart/admin/?app=catalog");
+        }
     }
 }
