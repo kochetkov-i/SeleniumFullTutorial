@@ -35,7 +35,7 @@ namespace SeleniumFullTutorial.Helpers
         {
             if (text != null)
             {
-                wait.Until(d => driver.FindElements(locator).Count > 0);
+                wait.Until(d => d.FindElements(locator).Count > 0);
                 driver.FindElement(locator).Clear();
                 driver.FindElement(locator).SendKeys(text);
             }
@@ -45,7 +45,7 @@ namespace SeleniumFullTutorial.Helpers
         {
             try
             {
-                wait.Until(d => driver.FindElements(locator).Count > 0);
+                wait.Until(d => d.FindElements(locator).Count > 0);
                 driver.FindElement(locator).Click();
             }
             catch(Exception ex)
@@ -58,7 +58,7 @@ namespace SeleniumFullTutorial.Helpers
         {
             if (text != null)
             {
-                wait.Until(d => driver.FindElements(locator).Count > 0);
+                wait.Until(d => d.FindElements(locator).Count > 0);
                 SelectElement menu = new SelectElement(driver.FindElement(locator));
                 menu.SelectByText(text, true);
             }
@@ -68,7 +68,7 @@ namespace SeleniumFullTutorial.Helpers
         {
             try
             {
-                wait.Until(d => driver.FindElements(locator).Count > 0);
+                wait.Until(d => d.FindElements(locator).Count > 0);
                 IWebElement element = driver.FindElement(locator);
                 element.Click(); //без этого клика нельзя получить количество опций
                 SelectElement menu = new SelectElement(element);

@@ -97,14 +97,14 @@ namespace SeleniumFullTutorial.Helpers
             if (driver.FindElement(By.CssSelector(".tabs li.active")).GetAttribute("innerText") == tab)
                 return;
             driver.FindElements(By.CssSelector(".tabs li")).FirstOrDefault(el => el.GetAttribute("innerText") == tab).Click();
-            manager.Wait.Until(d => driver.FindElement(By.CssSelector(".tabs li.active")).GetAttribute("innerText") == tab);
+            manager.Wait.Until(d => d.FindElement(By.CssSelector(".tabs li.active")).GetAttribute("innerText") == tab);
         }
 
         private void OpenNewProductForm()
         {
             driver.FindElements(By.CssSelector(".button")).
                 FirstOrDefault(el => el.GetAttribute("innerText") == " Add New Product").Click();
-            manager.Wait.Until(d => driver.FindElement(By.CssSelector("h1")).GetAttribute("innerText") == " Add New Product");
+            manager.Wait.Until(d => d.FindElement(By.CssSelector("h1")).GetAttribute("innerText") == " Add New Product");
             //без этой паузы почему что не находит елементы 
             Thread.Sleep(1000);
         }
