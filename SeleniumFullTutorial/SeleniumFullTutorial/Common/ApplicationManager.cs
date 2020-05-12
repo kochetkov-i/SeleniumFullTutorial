@@ -23,6 +23,7 @@ namespace SeleniumFullTutorial.Common
         protected CreateUsersHelper createUsersHelper;
         protected AddProductHelper addProductHelper;
         protected BasketHelper basketHelper;
+        protected NewWindowHelper newWindowHelper;
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
@@ -42,6 +43,7 @@ namespace SeleniumFullTutorial.Common
             createUsersHelper = new CreateUsersHelper(this);
             addProductHelper = new AddProductHelper(this);
             basketHelper = new BasketHelper(this);
+            newWindowHelper = new NewWindowHelper(this);
         }
 
         //не всегда вызывается деструктор
@@ -92,5 +94,6 @@ namespace SeleniumFullTutorial.Common
         public CreateUsersHelper User => createUsersHelper;
         public AddProductHelper AddProduct => addProductHelper;
         public BasketHelper Basket => basketHelper;
+        public NewWindowHelper Window => newWindowHelper;
     }
 }
