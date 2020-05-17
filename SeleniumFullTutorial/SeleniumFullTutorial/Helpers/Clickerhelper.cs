@@ -14,6 +14,12 @@ namespace SeleniumFullTutorial.Helpers
         {
            return GetElementsLinks(driver.FindElements(By.CssSelector("li#app- a")));
         }
+
+        public void ClickOnNews()
+        {
+            driver.FindElement(By.CssSelector("[data-menuitem='news']")).Click();
+        }
+
         private List<string> GetElementsLinks(ReadOnlyCollection<IWebElement> elements)
         {
             List<string> result = new List<string>();

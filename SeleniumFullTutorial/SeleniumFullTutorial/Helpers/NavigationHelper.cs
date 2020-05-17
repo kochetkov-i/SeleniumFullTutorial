@@ -1,4 +1,5 @@
-﻿using SeleniumFullTutorial.Common;
+﻿using NUnit.Framework;
+using SeleniumFullTutorial.Common;
 using System;
 
 namespace SeleniumFullTutorial.Helpers
@@ -14,11 +15,17 @@ namespace SeleniumFullTutorial.Helpers
 
         public void OpenHomePage()
         {
-            if (driver.Url == baseURL + "litecart/")
+            string url;
+            if (TestContext.CurrentContext.Test.ClassName == "SeleniumFullTutorial.Tests.CloudTests")
+                url = baseURL;
+            else
+                url = baseURL + "litecart/";
+
+            if (driver.Url == url)
             {
                 return;
             }
-            driver.Navigate().GoToUrl(baseURL + "litecart/");
+            driver.Navigate().GoToUrl(url);
         }
 
         public void GoToCheckedlink(string link)

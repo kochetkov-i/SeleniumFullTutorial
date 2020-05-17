@@ -6,7 +6,9 @@ namespace SeleniumFullTutorial.Common
     {
         public static IConfiguration Load()
         {
-            return new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();
+            return new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                                             .AddJsonFile("appsettings-remote-driver.json", optional: true, reloadOnChange: true)
+                                             .Build();
         }
     }
 }
