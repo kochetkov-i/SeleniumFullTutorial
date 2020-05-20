@@ -28,6 +28,10 @@ namespace SeleniumFullTutorial.Common
             }
             option.PageLoadStrategy = PageLoadStrategy.Normal;
             option.SetLoggingPreference(LogType.Browser, LogLevel.All);
+            //Proxy proxy = new Proxy();
+            //proxy.Kind = ProxyKind.Manual;
+            //proxy.HttpProxy = "localhost:8888";
+            //option.Proxy = proxy;
             return option;
         }
 
