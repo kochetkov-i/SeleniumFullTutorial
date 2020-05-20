@@ -1,15 +1,17 @@
 ﻿using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.Support.UI;
 using SeleniumFullTutorial.Helpers;
 using System;
+using System.Collections.ObjectModel;
 using System.Threading;
 
 namespace SeleniumFullTutorial.Common
 {
     public class ApplicationManager
     {
-        protected IWebDriver driver;
+        protected EventFiringWebDriver driver;
         protected WebDriverWait wait;
         protected IConfiguration config;
         protected string baseURL;
@@ -24,6 +26,7 @@ namespace SeleniumFullTutorial.Common
         protected AddProductHelper addProductHelper;
         protected BasketHelper basketHelper;
         protected NewWindowHelper newWindowHelper;
+        protected CheckLogHelper checkLogHelper;
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
@@ -44,6 +47,7 @@ namespace SeleniumFullTutorial.Common
             addProductHelper = new AddProductHelper(this);
             basketHelper = new BasketHelper(this);
             newWindowHelper = new NewWindowHelper(this);
+            checkLogHelper = new CheckLogHelper(this);
         }
 
         //не всегда вызывается деструктор
@@ -82,7 +86,7 @@ namespace SeleniumFullTutorial.Common
             return app.Value;
         }
 
-        public IWebDriver Driver => driver;
+        public EventFiringWebDriver Driver => driver;
         public NavigationHelper Navigator => navigator;
         public WebDriverWait Wait => wait;
         public IConfiguration Config => config;
@@ -95,5 +99,6 @@ namespace SeleniumFullTutorial.Common
         public AddProductHelper AddProduct => addProductHelper;
         public BasketHelper Basket => basketHelper;
         public NewWindowHelper Window => newWindowHelper;
+        public CheckLogHelper CheckLogs => checkLogHelper;
     }
 }

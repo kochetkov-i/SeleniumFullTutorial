@@ -66,5 +66,10 @@ namespace SeleniumFullTutorial.Helpers
         {
             GoToCheckedlink(baseURL + "litecart/checkout");
         }
+
+        public void GoToAdminProductCategoryPage()
+        {
+            GoToCheckedlink(baseURL + "litecart/admin/?app=catalog&doc=catalog&category_id=1");
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace SeleniumFullTutorial.Common
                     option.AddAdditionalCapability(section.Key, values[0], bool.Parse(values[1]));
             }
             option.PageLoadStrategy = PageLoadStrategy.Normal;
+            option.SetLoggingPreference(LogType.Browser, LogLevel.All);
             return option;
         }
 
