@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.Support.UI;
 using SeleniumFullTutorial.Helpers;
+using SeleniumFullTutorial.Pages;
 using System;
-using System.Collections.ObjectModel;
 using System.Threading;
 
 namespace SeleniumFullTutorial.Common
@@ -28,6 +27,10 @@ namespace SeleniumFullTutorial.Common
         protected NewWindowHelper newWindowHelper;
         protected CheckLogHelper checkLogHelper;
 
+        protected HomePage homePage;
+        protected CheckoutPage checkoutPage;
+        protected ProductPage productPage;
+
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
@@ -48,6 +51,10 @@ namespace SeleniumFullTutorial.Common
             basketHelper = new BasketHelper(this);
             newWindowHelper = new NewWindowHelper(this);
             checkLogHelper = new CheckLogHelper(this);
+
+            homePage = new HomePage(driver, this);
+            checkoutPage = new CheckoutPage(driver, this);
+            productPage = new ProductPage(driver, this);
         }
 
         //не всегда вызывается деструктор
@@ -100,5 +107,8 @@ namespace SeleniumFullTutorial.Common
         public BasketHelper Basket => basketHelper;
         public NewWindowHelper Window => newWindowHelper;
         public CheckLogHelper CheckLogs => checkLogHelper;
+        public HomePage HomePage => homePage;
+        public CheckoutPage CheckoutPage => checkoutPage;
+        public ProductPage ProductPage => productPage;
     }
 }

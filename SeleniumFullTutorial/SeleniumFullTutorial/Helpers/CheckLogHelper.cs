@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumFullTutorial.Common;
 using System;
 using System.Collections.Generic;
